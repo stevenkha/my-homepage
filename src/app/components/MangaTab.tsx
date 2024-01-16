@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface Manga {
     Cover: string;
@@ -8,6 +8,14 @@ interface Manga {
 }
 
 const MangaTab: React.FC = () => {
+    const [mangaData, setMangaData] = useState<Manga[]>([]);
+
+    useEffect(() => {
+        fetch(MANGA_ENDPOINT)
+            .then(resp => resp.json)
+            .then(data => setMangaData(data));
+    }, []);
+
     return (
         <h2>Manga</h2>
     );
