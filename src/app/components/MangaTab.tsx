@@ -11,10 +11,20 @@ const MangaTab: React.FC = () => {
     const [mangaData, setMangaData] = useState<Manga[]>([]);
 
     useEffect(() => {
-        fetch(MANGA_ENDPOINT)
-            .then(resp => resp.json)
-            .then(data => setMangaData(data));
-    }, []);
+        const fetchData = async () => {
+            try {
+                // Make API call to fetch manga data
+                const response = await fetch('/api/manga');
+                const data = await response.json();
+
+                setMangaData(data);
+            } catch (error) {
+                console.error('Error fetching manga data:', error);
+            }
+        };
+    
+        fetchData();
+      }, []);
 
     return (
         <h2>Manga</h2>
