@@ -1,0 +1,16 @@
+.mangaGrid {
+    text-align: center;
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  
+  .gridItem {
+    border: 1px solid #ccc;
+    padding: 16px;
+    text-align: left;
+  }
+  
