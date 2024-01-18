@@ -7,6 +7,10 @@ interface Manga {
     Current: string;
 }
 
+interface MangaList {
+    mangas: Manga[]
+}
+
 const MangaTab: React.FC = () => {
     const [mangaData, setMangaData] = useState<Manga[]>([]);
 
