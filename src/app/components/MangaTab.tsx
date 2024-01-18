@@ -19,7 +19,7 @@ const MangaTab: React.FC = () => {
         const fetchData = async () => {
             try {
                 // Make API call to fetch manga data
-                const response = await fetch('/api/manga');
+                const response = await fetch('http://localhost:8000/v1/mangas');
                 const data: MangaPayload = await response.json();
 
                 setMangaData(data);
