@@ -6,6 +6,7 @@ interface MangaInfo {
     title: string;
     viewed: string;
     current: string;
+    currentLink: string;
 }
 
 interface MangaPayload {
@@ -39,7 +40,7 @@ const MangaTab: React.FC = () => {
                             <img src={manga.cover} alt={`Cover for ${manga.title}`} className={styles.coverImage} />
                             <h3>{manga.title}</h3>
                             <p>Viewed: {manga.viewed}</p>
-                            <p>Current: {manga.current}</p>
+                            <a href={manga.currentLink} style={{color: '#059e9a'}}>Current: {manga.current}</a>
                         </div>
                     );
                 })}
