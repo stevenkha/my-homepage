@@ -19,6 +19,7 @@ const MangaTab: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // TODO: move api to a .env file
                 const response = await fetch('http://localhost:8000/v1/mangas');
                 const data: MangaPayload = await response.json();
                 setMangaData(data);
