@@ -36,7 +36,7 @@ const MangaTab: React.FC = () => {
             {mangaData.mangas.map((manga, index) => {
                     return (
                         <div key={index} className={styles.gridItem}>
-                            <img src={manga.cover} alt={`Cover for ${manga.title}`} />
+                            <img src={manga.cover} alt={`Cover for ${manga.title}`} className={styles.coverImage} />
                             <h3>{manga.title}</h3>
                             <p>Viewed: {manga.viewed}</p>
                             <p>Current: {manga.current}</p>
