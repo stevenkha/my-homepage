@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
+import styles from '../CSS/MangaTab.module.css'
 
-interface Manga {
+interface MangaInfo {
     Cover: string;
     Title: string;
     Viewed: string;
     Current: string;
 }
 
-interface MangaList {
-    mangas: Manga[]
+interface MangaPayload {
+    mangas: MangaInfo[];
 }
 
 const MangaTab: React.FC = () => {
-    const [mangaData, setMangaData] = useState<Manga[]>([]);
+    const [mangaData, setMangaData] = useState<MangaPayload>({ mangas: [] });
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 // Make API call to fetch manga data
                 const response = await fetch('/api/manga');
-                const data = await response.json();
+                const data: MangaPayload = await response.json();
 
                 setMangaData(data);
             } catch (error) {
@@ -28,10 +29,22 @@ const MangaTab: React.FC = () => {
         };
     
         fetchData();
-      }, []);
+    }, []);
 
     return (
-        <h2>Manga</h2>
+        <div className={styles.mangaGrid}>
+            <h2>Manga</h2>
+            <div className={styles.gridContainer}>
+                {mangaData.mangas.map((manga, index) => (
+                    <div key={index} className={styles.gridItem}>
+                        <img src={manga.Cover} alt={`Cover for ${manga.Title}`} />
+                        <h3>{manga.Title}</h3>
+                        <p>Viewed: {manga.Viewed}</p>
+                        <p>Current: {manga.Current}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 };
 
