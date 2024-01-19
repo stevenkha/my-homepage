@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface AnimeInfo {
     cover: string;
@@ -13,6 +13,22 @@ interface AnimePayload {
 }
 
 const AnimeTab: React.FC = () => {
+    const [animeData, setAnimeData] = useState<AnimePayload>({ animes: [] });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/v1/animes');
+                const data: AnimePayload = await response.json();
+                setAnimeData(data);
+            } catch (error) {
+                console.error('Error fetching anime data:', error)
+            }
+        }
+
+        fetchData();
+    }, []);
+
     return (
         <h2>Anime</h2>
     );
