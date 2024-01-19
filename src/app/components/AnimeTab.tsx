@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles from '../CSS/AnimeTab.module.css'
 
 interface AnimeInfo {
     cover: string;
@@ -27,11 +28,27 @@ const AnimeTab: React.FC = () => {
             }
         }
 
+        // TODO: cache results when not navigating away from page
+
         fetchData();
     }, []);
 
     return (
-        <h2>Anime</h2>
+        <div className={styles.animeGrid}>
+            <h2>Manga</h2>
+            <div className={styles.gridContainer}>
+            {animeData.animes.map((anime, index) => {
+                    return (
+                        <div key={index} className={styles.gridItem}>
+                            <img src={anime.cover} alt={`Cover for ${anime.title}`} className={styles.coverImage} />
+                            <h3>{anime.title}</h3>
+                            <p>Viewed: {anime.viewed}</p>
+                            <p style={{color: '#059e9a'}}>Current: {anime.current}</p>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
     );
 };
 
