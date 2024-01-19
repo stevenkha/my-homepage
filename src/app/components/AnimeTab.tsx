@@ -18,6 +18,7 @@ const AnimeTab: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // TODO: move api to .env file
                 const response = await fetch('http://localhost:8000/v1/animes');
                 const data: AnimePayload = await response.json();
                 setAnimeData(data);
