@@ -15,6 +15,14 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveComponent }) => {
           Manga
         </button>
       </div>
+      <div className="container mx-auto flex justify-between items-center">
+        <button
+          onClick={() => setActiveComponent("AnimeTab")}
+          className="text-white hover:text-gray-300 focus:outline-none"
+        >
+          Anime
+        </button>
+      </div>
     </nav>
   );
 };
