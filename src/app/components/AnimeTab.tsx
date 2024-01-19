@@ -35,7 +35,7 @@ const AnimeTab: React.FC = () => {
 
     return (
         <div className={styles.animeGrid}>
-            <h2>Manga</h2>
+            <h2>Anime</h2>
             <div className={styles.gridContainer}>
             {animeData.animes.map((anime, index) => {
                     return (
