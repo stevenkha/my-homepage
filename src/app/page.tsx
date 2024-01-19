@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import MangaTab from './components/MangaTab'; // Import your MangaTab component
+import AnimeTab from './components/AnimeTab';
 
 const Home: React.FC = () => {
   const [activeComponent, setActiveComponent] = useState<string>("MangaTab");
@@ -10,7 +11,8 @@ const Home: React.FC = () => {
     switch (activeComponent) {
       case "MangaTab":
         return <MangaTab />;
-      // Add more cases for other components
+      case "AnimeTab":
+        return <AnimeTab />;
       default:
         return <MangaTab />;
     }
