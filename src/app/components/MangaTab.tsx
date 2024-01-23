@@ -5,6 +5,7 @@ interface MangaInfo {
     cover: string;
     title: string;
     viewed: string;
+    viewedLink: string;
     current: string;
     currentLink: string;
 }
@@ -51,9 +52,17 @@ const MangaTab: React.FC = () => {
                     return (
                         <div key={index} className={styles.gridItem}>
                             <img src={manga.cover} alt={`Cover for ${manga.title}`} className={styles.coverImage} />
-                            <h3>{manga.title}</h3>
-                            <p>Viewed: {manga.viewed}</p>
-                            <a href={manga.currentLink} style={{color: '#059e9a'}}>Current: {manga.current}</a>
+                            <div>
+                                <h3>{manga.title}</h3>
+                                <span className={styles.itemSpan}>
+                                    Viewed:  
+                                    <a href={manga.viewedLink} style={{color: 'black', paddingLeft: 5}}>{manga.viewed}</a>
+                                </span>
+                                <span className={styles.itemSpan}>
+                                    Current: 
+                                    <a href={manga.currentLink} style={{color: '#059e9a', paddingLeft: 5}}>{manga.current}</a>
+                                </span>
+                            </div>
                         </div>
                     );
                 })}
