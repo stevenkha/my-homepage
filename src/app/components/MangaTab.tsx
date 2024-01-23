@@ -40,8 +40,6 @@ const MangaTab: React.FC = () => {
             }
         };
     
-        // TODO: cache results when not navigating away from page
-
         fetchData();
     }, []);
 

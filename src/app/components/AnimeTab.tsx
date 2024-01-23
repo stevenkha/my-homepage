@@ -13,22 +13,32 @@ interface AnimePayload {
     animes: AnimeInfo[];
 }
 
+function setStorage(data: AnimePayload) {
+    const jsonString = JSON.stringify(data);
+    sessionStorage.setItem('animeData', jsonString);
+}
+
 const AnimeTab: React.FC = () => {
     const [animeData, setAnimeData] = useState<AnimePayload>({ animes: [] });
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // TODO: move api to .env file
-                const response = await fetch('http://localhost:8000/v1/animes');
-                const data: AnimePayload = await response.json();
-                setAnimeData(data);
+                const existingData = JSON.parse(sessionStorage.getItem('animeData') as string);
+
+                if (existingData !== null) {
+                    setAnimeData(existingData);
+                } else {
+                    // TODO: move api to .env file
+                    const response = await fetch('http://localhost:8000/v1/animes');
+                    const data: AnimePayload = await response.json();
+                    setStorage(data)
+                    setAnimeData(data);
+                }
             } catch (error) {
                 console.error('Error fetching anime data:', error)
             }
-        }
-
-        // TODO: cache results when not navigating away from page
+        };
 
         fetchData();
     }, []);
