@@ -46,6 +46,24 @@ const AnimeTab: React.FC = () => {
     return (
         <div className={styles.animeGrid}>
             <h2>Anime</h2>
+            <div>
+                {animeData.scheduledAnimes ? (
+                    <div className={styles.gridContainer}>
+                        {animeData.scheduledAnimes.map((anime, index) => (
+                            <div key={index} className={styles.gridItem}>
+                                <img src={anime.cover} alt={`Cover for ${anime.title}`} className={styles.coverImage} />
+                                <h3>{anime.title}</h3>
+                                <p>Viewed: {anime.viewed}</p>
+                                <p style={{color: '#059e9a'}}>Current: {anime.current}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div>
+                        No new animes
+                    </div>
+                )}
+            </div>
             <div className={styles.gridContainer}>
             {animeData.backlogAnimes.map((anime, index) => {
                     return (
