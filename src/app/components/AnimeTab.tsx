@@ -6,11 +6,11 @@ interface AnimeInfo {
     title: string;
     viewed: string;
     current: string;
-    currentLink: string;
 }
 
 interface AnimePayload {
-    animes: AnimeInfo[];
+    scheduledAnimes: AnimeInfo[];
+    backlogAnimes: AnimeInfo[];
 }
 
 function setStorage(data: AnimePayload) {
@@ -19,7 +19,7 @@ function setStorage(data: AnimePayload) {
 }
 
 const AnimeTab: React.FC = () => {
-    const [animeData, setAnimeData] = useState<AnimePayload>({ animes: [] });
+    const [animeData, setAnimeData] = useState<AnimePayload>({ scheduledAnimes: [], backlogAnimes: [] });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -47,7 +47,7 @@ const AnimeTab: React.FC = () => {
         <div className={styles.animeGrid}>
             <h2>Anime</h2>
             <div className={styles.gridContainer}>
-            {animeData.animes.map((anime, index) => {
+            {animeData.backlogAnimes.map((anime, index) => {
                     return (
                         <div key={index} className={styles.gridItem}>
                             <img src={anime.cover} alt={`Cover for ${anime.title}`} className={styles.coverImage} />
