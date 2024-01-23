@@ -13,16 +13,28 @@ interface MangaPayload {
     mangas: MangaInfo[];
 }
 
+function setStorage(data: MangaPayload) {
+    const jsonString = JSON.stringify(data);
+    sessionStorage.setItem('mangaData', jsonString);
+}
+
 const MangaTab: React.FC = () => {
     const [mangaData, setMangaData] = useState<MangaPayload>({ mangas: [] });
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // TODO: move api to a .env file
-                const response = await fetch('http://localhost:8000/v1/mangas');
-                const data: MangaPayload = await response.json();
-                setMangaData(data);
+                const existingData = JSON.parse(sessionStorage.getItem('mangaData') as string);
+
+                if (existingData !== null) {
+                    setMangaData(existingData);
+                } else {
+                    // TODO: move api to a .env file
+                    const response = await fetch('http://localhost:8000/v1/mangas');
+                    const data: MangaPayload = await response.json();
+                    setStorage(data);
+                    setMangaData(data);
+                }
             } catch (error) {
                 console.error('Error fetching manga data:', error);
             }
