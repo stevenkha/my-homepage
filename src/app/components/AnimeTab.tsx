@@ -6,6 +6,7 @@ interface AnimeInfo {
     title: string;
     viewed: string;
     current: string;
+    slug: string;
 }
 
 interface AnimePayload {
