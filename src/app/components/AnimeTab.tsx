@@ -46,7 +46,7 @@ const AnimeTab: React.FC = () => {
 
     return (
         <div className={styles.animeGrid}>
-            <h2>Anime</h2>
+            <h2>New Episodes</h2>
             <div>
                 {animeData.scheduledAnimes ? (
                     <div className={styles.gridContainer}>
@@ -63,6 +63,7 @@ const AnimeTab: React.FC = () => {
                     </div>
                 )}
             </div>
+            <h2>Anime</h2>
             <div className={styles.gridContainer}>
             {animeData.backlogAnimes.map((anime, index) => {
                     return (
