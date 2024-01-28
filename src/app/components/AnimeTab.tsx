@@ -71,7 +71,7 @@ const AnimeTab: React.FC = () => {
                             <img src={anime.cover} alt={`Cover for ${anime.title}`} className={styles.coverImage} />
                             <h3>{anime.title}</h3>
                             <p>Viewed: {anime.viewed}</p>
-                            <p style={{color: '#059e9a'}}>Current: {anime.current}</p>
+                            <p>Current: {anime.current}</p>
                         </div>
                     );
                 })}
