@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from '../CSS/MangaTab.module.css'
+import { mangaGetURL } from "../utils/api";
 
 interface MangaInfo {
     cover: string;
@@ -30,8 +31,7 @@ const MangaTab: React.FC = () => {
                 if (existingData !== null) {
                     setMangaData(existingData);
                 } else {
-                    // TODO: move api to a .env file
-                    const response = await fetch('http://localhost:8000/v1/mangas');
+                    const response = await fetch(mangaGetURL as string);
                     const data: MangaPayload = await response.json();
                     setStorage(data);
                     setMangaData(data);

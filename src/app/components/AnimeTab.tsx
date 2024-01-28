@@ -31,7 +31,6 @@ const AnimeTab: React.FC = () => {
                 if (existingData !== null) {
                     setAnimeData(existingData);
                 } else {
-                    // TODO: move api to .env file
                     const response = await fetch(animeGetURL as string);
                     const data: AnimePayload = await response.json();
                     setStorage(data)
