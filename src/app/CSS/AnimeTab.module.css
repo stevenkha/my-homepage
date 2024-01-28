@@ -21,10 +21,13 @@
   height: 300px;
 }
 
-.editLink {
+.animeWatchedInfo {
   position: absolute;
   bottom: 0;
   left: 0;
   padding: 10px;
+}
+
+.editLink {
   color: #059e9a;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from '../CSS/AnimeTab.module.css'
+import { relative } from "path";
 
 interface AnimeInfo {
     cover: string;
@@ -69,10 +70,14 @@ const AnimeTab: React.FC = () => {
                     return (
                         <div key={index} className={styles.gridItem}>
                             <img src={anime.cover} alt={`Cover for ${anime.title}`} className={styles.coverImage} />
-                            <h3>{anime.title}</h3>
-                            <p>Viewed: {anime.viewed}</p>
-                            <p>Current: {anime.current}</p>
-                            <a className={styles.editLink}>Edit</a>
+                            <div style={{position: "relative", paddingBottom: "100px"}}>
+                                <h3>{anime.title}</h3>
+                            </div>
+                            <div className={styles.animeWatchedInfo}>
+                                <p>Viewed: {anime.viewed}</p>
+                                <p>Current: {anime.current}</p>
+                                <a>Edit</a>
+                            </div>
                         </div>
                     );
                 })}
