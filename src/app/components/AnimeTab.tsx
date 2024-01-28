@@ -76,7 +76,7 @@ const AnimeTab: React.FC = () => {
                             <div className={styles.animeWatchedInfo}>
                                 <p>Viewed: {anime.viewed}</p>
                                 <p>Current: {anime.current}</p>
-                                <a href={`${animeEditURL as string}`}>Edit</a>
+                                <a href={`${animeEditURL as string}`} className={styles.editLink}>Edit</a>
                             </div>
                         </div>
                     );
