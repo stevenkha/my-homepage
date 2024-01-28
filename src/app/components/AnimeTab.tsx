@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from '../CSS/AnimeTab.module.css'
-import { relative } from "path";
+import { animeGetURL, animeEditURL } from "../utils/api";
 
 interface AnimeInfo {
     cover: string;
@@ -32,7 +32,7 @@ const AnimeTab: React.FC = () => {
                     setAnimeData(existingData);
                 } else {
                     // TODO: move api to .env file
-                    const response = await fetch('http://localhost:8000/v1/animes');
+                    const response = await fetch(animeGetURL as string);
                     const data: AnimePayload = await response.json();
                     setStorage(data)
                     setAnimeData(data);
@@ -76,7 +76,7 @@ const AnimeTab: React.FC = () => {
                             <div className={styles.animeWatchedInfo}>
                                 <p>Viewed: {anime.viewed}</p>
                                 <p>Current: {anime.current}</p>
-                                <a>Edit</a>
+                                <a href={`${animeEditURL as string}`}>Edit</a>
                             </div>
                         </div>
                     );
