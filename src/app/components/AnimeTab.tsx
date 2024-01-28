@@ -72,6 +72,7 @@ const AnimeTab: React.FC = () => {
                             <h3>{anime.title}</h3>
                             <p>Viewed: {anime.viewed}</p>
                             <p>Current: {anime.current}</p>
+                            <a className={styles.editLink}>Edit</a>
                         </div>
                     );
                 })}

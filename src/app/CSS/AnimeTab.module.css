@@ -1,20 +1,30 @@
 .animeGrid {
-    text-align: center;
-  }
+  position: relative;
+  text-align: center;
+}
   
-  .gridContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-  }
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
   
-  .gridItem {
-    border: 1px solid #ccc;
-    padding: 16px;
-    text-align: left;
-  }
+.gridItem {
+  position: relative;
+  border: 1px solid #ccc;
+  padding: 16px;
+  text-align: left;
+}
   
-  .coverImage {
-    width: 100%;
-    height: 300px;
+.coverImage {
+  width: 100%;
+  height: 300px;
+}
+
+.editLink {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  color: #059e9a;
 }
