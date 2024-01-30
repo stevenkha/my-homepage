@@ -9,13 +9,13 @@
     justify-content: space-evenly;
 }
 
-.navLink {
+.navButton {
     text-decoration: none;
     color: white;
     font-weight: bold;
 }
 
-.navLink:hover {
+.navButton:hover {
     color: #61dafb;
 }
   
