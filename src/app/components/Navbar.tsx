@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../CSS/Navbar.module.css"
 
 interface NavbarProps {
   setActiveComponent: React.Dispatch<React.SetStateAction<string>>;
@@ -6,19 +7,19 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ setActiveComponent }) => {
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className={styles.navbar}>
+      <div className={styles.navList}>
         <button
           onClick={() => setActiveComponent("MangaTab")}
-          className="text-white hover:text-gray-300 focus:outline-none"
+          className={styles.navButton}
         >
           Manga
         </button>
       </div>
-      <div className="container mx-auto flex justify-between items-center">
+      <div className={styles.navList}>
         <button
           onClick={() => setActiveComponent("AnimeTab")}
-          className="text-white hover:text-gray-300 focus:outline-none"
+          className={styles.navButton}
         >
           Anime
         </button>
