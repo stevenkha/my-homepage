@@ -15,8 +15,6 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveComponent }) => {
         >
           Manga
         </button>
-      </div>
-      <div className={styles.navList}>
         <button
           onClick={() => setActiveComponent("AnimeTab")}
           className={styles.navButton}
