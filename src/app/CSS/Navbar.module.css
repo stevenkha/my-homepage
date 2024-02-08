@@ -11,11 +11,15 @@
 
 .navButton {
     text-decoration: none;
+    background-color: #5d782e;
     color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     font-weight: bold;
 }
 
 .navButton:hover {
-    color: #61dafb;
+    color: #cccccc;
 }
   
