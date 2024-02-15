@@ -40,7 +40,6 @@ const AnimeTab: React.FC = () => {
                     setStorage(responsePayload);
                     data = responsePayload;
                 }
-
             } catch (error) {
                 console.error('Error fetching anime data:', error)
             }
