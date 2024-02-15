@@ -24,25 +24,29 @@ const MangaTab: React.FC = () => {
     const [mangaData, setMangaData] = useState<MangaPayload>({ mangas: [] });
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const existingData = JSON.parse(sessionStorage.getItem('mangaData') as string);
+        const fetchData = async (): Promise<MangaPayload> => {
+            let data: MangaPayload = {
+                mangas: []
+            };
 
+            try {
+                const existingData: MangaPayload = JSON.parse(sessionStorage.getItem('mangaData') as string);
                 if (existingData !== null) {
-                    setMangaData(existingData);
-                    return;
+                    data = existingData;
+                } else {
+                    const response = await fetch(mangaGetURL as string);
+                    const responsePayload: MangaPayload = await response.json();
+                    setStorage(responsePayload);
+                    data = responsePayload;
                 }
-                
-                const response = await fetch(mangaGetURL as string);
-                const data: MangaPayload = await response.json();
-                setStorage(data);
-                setMangaData(data);
             } catch (error) {
-                console.error('Error fetching manga data:', error);
+                console.error('Error fetching anime data:', error);
             }
+
+            return data;
         };
-    
-        fetchData();
+
+        fetchData().then(data => setMangaData(data));
     }, []);
 
     return (
