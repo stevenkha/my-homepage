@@ -24,7 +24,6 @@ const AnimeTab: React.FC = () => {
     const [animeData, setAnimeData] = useState<AnimePayload>({ scheduledAnimes: [], backlogAnimes: [] });
 
     useEffect(() => {
-        
         const fetchData = async (): Promise<AnimePayload> => {
             let data: AnimePayload = {
                 scheduledAnimes: [],
