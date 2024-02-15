@@ -24,26 +24,32 @@ const AnimeTab: React.FC = () => {
     const [animeData, setAnimeData] = useState<AnimePayload>({ scheduledAnimes: [], backlogAnimes: [] });
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const existingData = JSON.parse(sessionStorage.getItem('animeData') as string);
+        
+        const fetchData = async (): Promise<AnimePayload> => {
+            let data: AnimePayload = {
+                scheduledAnimes: [],
+                backlogAnimes: []
+            };
 
+            try {
+                const existingData: AnimePayload = JSON.parse(sessionStorage.getItem('animeData') as string);
                 if (existingData !== null) {
-                    setAnimeData(existingData);
-                    return;
+                    data = existingData;
+                } else {
+                    const response = await fetch(animeGetURL as string);
+                    const responsePayload: AnimePayload = await response.json();
+                    setStorage(responsePayload);
+                    data = responsePayload;
                 }
 
-                const response = await fetch(animeGetURL as string);
-                const data: AnimePayload = await response.json();
-                setStorage(data)
-                setAnimeData(data);
-                
             } catch (error) {
                 console.error('Error fetching anime data:', error)
             }
+
+            return data;
         };
 
-        fetchData();
+        fetchData().then(data => setAnimeData(data));
     }, []);
 
     return (
