@@ -41,7 +41,7 @@ const AnimeTab: React.FC = () => {
                     data = responsePayload;
                 }
             } catch (error) {
-                console.error('Error fetching anime data:', error)
+                console.error('Error fetching anime data:', error);
             }
 
             return data;
