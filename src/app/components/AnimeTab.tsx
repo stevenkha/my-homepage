@@ -30,12 +30,14 @@ const AnimeTab: React.FC = () => {
 
                 if (existingData !== null) {
                     setAnimeData(existingData);
-                } else {
-                    const response = await fetch(animeGetURL as string);
-                    const data: AnimePayload = await response.json();
-                    setStorage(data)
-                    setAnimeData(data);
+                    return;
                 }
+
+                const response = await fetch(animeGetURL as string);
+                const data: AnimePayload = await response.json();
+                setStorage(data)
+                setAnimeData(data);
+                
             } catch (error) {
                 console.error('Error fetching anime data:', error)
             }

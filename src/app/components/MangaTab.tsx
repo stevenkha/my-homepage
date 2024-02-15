@@ -30,12 +30,13 @@ const MangaTab: React.FC = () => {
 
                 if (existingData !== null) {
                     setMangaData(existingData);
-                } else {
-                    const response = await fetch(mangaGetURL as string);
-                    const data: MangaPayload = await response.json();
-                    setStorage(data);
-                    setMangaData(data);
+                    return;
                 }
+                
+                const response = await fetch(mangaGetURL as string);
+                const data: MangaPayload = await response.json();
+                setStorage(data);
+                setMangaData(data);
             } catch (error) {
                 console.error('Error fetching manga data:', error);
             }
