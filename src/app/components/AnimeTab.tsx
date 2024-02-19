@@ -36,7 +36,7 @@ const AnimeTab: React.FC = () => {
                     return existingData;
                 }
 
-                const response = await fetch(animeGetURL as string);
+                const response = await fetch(animeGetURL);
                 const responsePayload: AnimePayload = await response.json();
                 setStorage(responsePayload);
                 data = responsePayload;

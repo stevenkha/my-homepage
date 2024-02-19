@@ -35,7 +35,7 @@ const MangaTab: React.FC = () => {
                     return existingData;
                 }
 
-                const response = await fetch(mangaGetURL as string);
+                const response = await fetch(mangaGetURL);
                 const responsePayload: MangaPayload = await response.json();
                 setStorage(responsePayload);
                 data = responsePayload;
